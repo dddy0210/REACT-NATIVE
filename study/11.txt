@@ -1,0 +1,34 @@
+hooks
+ㄴ useState
+ㄴ useEffect
+ㄴ useRef
+ㄴ useMemo
+ㄴ 커스텀훅
+
+ContextAPI
+ㄴ context 생성방법
+ㄴ consumer,provider 사용방법
+ㄴ useContext 사용방법
+
+Navigation
+ㄴ Stack, Tab 네비게이션 사용법
+ㄴ Drawer 네비게이션
+-----------------------------------------------------------------------------------------------
+Drawer 네비게이션
+npm install @react-navigation/drawer@6.7.2
+
+앱에서 화면간 네비게이션을 관리해줄 수있는 라이브러리
+npm install @react-navigation/native@6.1.18
+
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+파이어베이스를 사용하기 위해 라이브러리
+npm install firebase --legacy-peer-deps
+
+expo-app-loading패키지는 expo sdk 46부터 더이상 사용되지 않으며, expo-splash-screen을 사용한다
+npm install expo-splash-screen
+
+import {Asset} from "expo-asset"; //이미지,오디오,동영상 등 다양한 리소스를 관리하고 미리 로드할 수 있도록 도와준다.
+----------파이어베이스----------
+- 구글에서 제공하는 클라우드 기반 개발 플랫폼 서버리스 애플리케이션을 쉽게 개발하고 배포할 수 있도록 다양한 백엔드 서비스를 제공한다.
+- 주로 모바일 앱과 웹 애플리케이션 개발에 사용된다 시시간 데이터베이스 인증 클라우드 저장소 푸시 알림 등의 기능을 손쉽게 구현할 수 있다.

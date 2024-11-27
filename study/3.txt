@@ -1,0 +1,78 @@
+컴포넌트를 호출할 때 -> 속성명=문자열,숫자,{변수,객체,함수} 형태로 전달
+
+해당 함수에서 매개변수에 할당된다.
+<Comp title="제목" key="값" />
+const Comp = (props) => {
+     console.log(props) -> {"title":"제목","key":"값"}
+}
+const Comp = ({title,key})=> {
+     console.log(title)
+}
+
+state를 사용하는 이유
+1. UI업데이트의 자동화
+- state가 변경될 때마다 재렌더링을 해서 개발자가 직접 dom을 조작할 필요가 없다.
+2. 컴포넌트와 데이터의 일관성 유지
+- 고유한 state를 통해 자신만의 데이터를 독립적으로 관리할 수 있다.
+3. 비동기 데이터와 상태 변화 처리
+- setter함수는 비동기로 작동한다.
+- 연속적으로 setter함수를 호출할 경우 예상치 못한 결과가 나올 수 있다.
+- 이전 상태를 기준으로 다음상태를 설정할 때는 콜백함수를 이용하는것이 좋다.
+
+setCount(count + 1)
+setCount(count + 1) -> 예상치 못한 결과가 발생할 수 있다.
+
+setCount(preventCount => preventCount +1)
+setCount(preventCount => preventCount +1)
+
+입력했을 때 
+터치했을 때
+스크롤했을 때
+-------------------------------------------------------
+자바스크립트 객체
+
+객체리터럴
+const person = { key:value, key:value, ... }
+key -> 프로퍼티
+value -> 프로퍼티의 값
+
+프로퍼티 값에 들어갈 수 있는 타입
+문자열,숫자,boolean,null,객체,배열,함수(객체 안에 정의된 함수를 메서드)
+
+const user = {
+     name : "Alice",
+     age : 30,
+     isMarried : true,
+     address : null,
+     contact : {email: "alice@example.com",phone:"123-456-789"},
+     hobbies : ["reading","sports"],
+     greet(){
+          console.log();
+     }
+}
+호출방법
+user.name / user.greet()
+
+justifyContent
+컴포넌트의 정렬
+
+alignItems
+flexDirection에서 정한 방향과 수직이 되는 방향으로 정렬할 때 사용하는 속성
+
+주 축을 결정하는 flexDirection
+주 축에서 item을 정렬하는 justifyContent
+주 축의 수직에서 item을 정렬하는 alignItems
+
+그림자 - ios에만 적용되는 속성
+shadowColor : 그림자 색 설정
+shadowOffset : width와 height값을 지정하여 그림자 거리 설정
+shadowOpacity : 그림자의 불투명도 설정
+shadowRadius : 그림자의 흐름 반경 설정
+
+리액트 네이티브에서 제공하는 Platform이라는 모듈을 이용해 각 플랫폼마다 다른 코드가 적용되도록 코드를 작성할 수 있다.
+
+스타일드 컴포넌트
+웹의 CSS와는 속성 이름이 다르거나, 타입이 다르거나, 단위를 생략하거나 하는 등 차이 때문에 불편하게 느끼는 경우가 있다.
+npm install styled-components 설치안될 때npm install styled-components@5.3.6 --legacy-peer-deps
+
+CSS-in-JS 개념을 적용한 것으로,JavaScript파일 내에서 스타일을 선언하고 컴포넌트로 관리할 수 있도록 해준다.

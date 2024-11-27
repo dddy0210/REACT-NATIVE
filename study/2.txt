@@ -1,0 +1,33 @@
+npm install @react-native-community/cli
+
+리액트 네이티브사용할때 필요한것
+1.node.js(LTS)
+LTS(Long Term Service)
+오랜기간 지원하는 버전
+
+2.python
+
+3.JDK와 안드로이드 스튜디오
+
+안드로이드 스튜디오 설치
+-SDK(안드로이드 플랫폼, 에뮬레이터, 빌드도구, 디버깅도구 기타 라이브러리와 API)
+--------------------------------------------------------------------------------------------
+expo D드라이브에서 설치안될때
+윈도우 파워셀 관리자모드로 실행
+Set-ExecutionPolicy RemoteSigned -Scope CurrentUser		Y
+다시 터밀널로 돌아와서 expo init my-first-expo
+--------------------------------------------------------------------------------------------
+이벤트
+사용자의 행동에 따라 상호작용하는 모든 것
+많은 종류의 이벤트가 존재하고,컴포넌트의 역할에 따라 제공되는 이벤트도 약간씩 차이가 있다.
+
+press
+onClick과 가장 비슷한 이벤트
+
+onPressIn>onPress>onPressOut또는
+onPressIn>onLongPress>onPressOut
+onLongPress이랑 onPress는 같이작업되지않는다.
+
+change이벤트
+변화를 감지하는 이벤트
+값을 입력하는 TextInput 컴포넌트에서 많이 사용된다.

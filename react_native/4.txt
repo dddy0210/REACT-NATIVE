@@ -1,0 +1,40 @@
+자바스크립트에 HTML 같이 쓸 수 있는 문법
+props -> 값을 컴포넌트에 전달할 때 쓰는 개념
+
+Button.js
+const Button = (props) => {
+     return(
+          <Pressable title={props.title}/>
+     )
+}
+App.js
+import Button.....
+const App = () => {
+     return(
+          <Button title="제목" />
+     )
+}
+------------------------------------------------------
+<Footer sytle={{height:80}}/>
+
+flex-direction 
+column : 세로 방향으로 정렬
+column-reverse: 자식 요소들을 세로 방향으로 정렬하되, 역방향으로 배치한다.
+row: 자식 요소들을 가로 방향으로 정렬한다.
+row-reverse: 자식 요소들을 가로 방향으로 정렬하되, 역방향으로 배치한다.
+
+justify-content 
+flex-start: 자식 요소들을 주축의 시작 부분에 배치한다. (기본값)
+center: 자식 요소들을 주축의 중앙에 배치한다.
+flex-end: 자식 요소들을 주축의 끝 부분에 배치한다.
+space-between: 첫 번째 자식 요소는 주축의 시작 부분에, 마지막 자식 요소는 주축의 끝 부분에 배치하며, 각 자식 요소 간에 동일한 간격을 둔다.
+space-around: 자식 요소들 사이에 동일한 간격을 배치하되, 주축의 양 끝에도 반 간격만큼의 여백을 둔다.
+space-evenly: 모든 자식 요소들 사이에 동일한 간격을 두며, 주축의 양 끝에도 동일한 간격을 둔다.
+
+
+TextInput의 속성
+placeholderTextColor : placeholder의 색상을 설정한다.
+maxLength : 입력할 수 있는 최대 문자 수
+autoCapitalize : 자동으로 대문자로 전환하는 속성
+autoCorrect : 자동 수정 기능
+returnKeyType : 키보드의 완료 버튼을 설정하는 returnKeyType

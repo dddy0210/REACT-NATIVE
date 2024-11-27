@@ -1,0 +1,131 @@
+<NavigationContainer>
+     <Stack.Navigator initialRouteName="Home">
+          <Stack.Screen name="호출될이름" component={렌더링할 컴포넌트} />
+          <Stack.Screen name="List" component={List} />
+          <Stack.Screen name="Home" component={Home} />
+          <Stack.Screen name="Item" component={Item} />
+     </Stack.Navigator>
+</NavigationContainer>
+------------------------------------------------------------------------------------------------------------------
+1. Navigator에 스타일 주기 -> 하위 스크린에도 다 적용
+<Stack.Navigator
+     initialRouteName="Home"
+     screenOptions={{옵션}}
+>
+2. Screen 컴포넌트에 스타일 주기 -> 해당 스크린에만 적용
+<Stack.Navigator
+     name="List" 
+     component={List}
+     options={{옵션}}
+>
+3. 화면으로 사용되는 컴포넌트에서 navigation객체를 사용해서 스타일 주기 -> 해당 스크린에만 적용
+const Item = ({navigation}) => {
+     navigation.setOptions({옵션})
+}
+------------------------------------------------------------------------------------------------------------------
+const List = ({navigation}) => {
+     return(
+          <Button onPress={()=> navigation.navigate("Item")}/>
+     )
+}
+
+const Item = ({navigation,route}) => {
+     navigation.navigate("detail",{id:item.id, title:item.title}) -> detail 페이지로 이동
+}
+const Item = ({navigation,route}) => {
+     let {id, title} = route.params
+     id,title
+}
+
+
+Stack 네비게이션
+화면을 쌓아가면서 이동하는 방식
+
+1. 화면을 구성할 컴포넌트를 만든다.
+2. Navigation을 만들고 Screen 컴포넌트를 만든다.
+3. 각각의 Screen 컴포넌트에 우리가 만든 화면 컴포넌트를 할당한다.
+4. NavigationContainer 컴포넌트로 Navigation 컴포넌트를 감싼다.
+------------------------------------------------------------------------------------------------------------------
+useLayoutEffect
+화면에 그리기 전에 실행이 된다.
+
+목적
+컴포넌트의 레이아웃을 읽어오고 설정할 때
+화면 크기에 따라 UI 요소의 위치나 크기를 동적으로 조정해야 할 때
+
+네이게이션설정
+특정 컴포넌트가 화면에 표시될 때 네비게이션 옵션을 설정하거나 변경해야 할 때
+
+애니메이션 및 레이아웃 전환
+특정 상태가 변하면 UI레이아웃에서 애니메이션을 추가해야하는 경우
+
+useEffect를 사용하면 화면에 버튼이 보이고나서 UI가 한템포 늦게 적용되는 경우가 발생할 수 있다.
+
+화면에 표시되는 요소를 바로잡고 레이아웃에 필요한 계산을 먼저끝내는 용도
+------------------------------------------------------------------------------------------------------------------
+헤더수정
+headerTitle : 헤더의 글씨 수정
+headerStyle : 헤더의 배경색 수정
+headerTitleStyle : 헤더와 타이틀 컴포넌트의 스타일을 수정
+headerTitleAlign:"center"
+ㄴIOS는 center 기본값, android는 left가 기본값
+headerBackTitleVisible : 뒤로가기 버튼의 글씨를 표시함 (true, false)
+headerBackTitle : 뒤로가기 버튼의 내용 설정
+headerTintColor : 뒤로가기 버튼이나 헤더 텍스트의 색상을 설정
+
+헤더 감추기
+headerMode : Navigator 에서 모든 화면에 헤더가 표시되는 방식을 설정
+ㄴ screen : 각 화면마다 개별적으로 헤더가 나타간다
+ㄴ float : 각 화면마다 개별적으로 헤더가 나타난다.
+ㄴ none : 헤더를 표시하지 않는다. 모든 화면에서 헤더가 사라진다.
+
+headerShown
+각 screen에 대해 헤더를 개별적으로 표시할지 여부 설정 옵션
+<Stack.Screen name="Home" component={Home} options={{headerShown:false}} />
+
+웹으로 서비스를 함
+
+앱으로는 관리자 기능
+------------------------------------------------------------------------------------------------------------------
+회원관리 앱 만들기
+
+1. UserStack 만들기
+
+2. UserHomeScreen 에서 유저목록보기 버튼 누르면 유저 목록이 나오는 페이지로 이동
+
+3. UserListScreen 유저목록에서 유저이름  (프로필보기)버튼으로 표시
+프로필보기 버튼을 누르면 상세페이지로 이동
+  const users = [
+    { id: '1', name: 'John Doe', email: 'john@example.com' },
+    { id: '2', name: 'Jane Smith', email: 'jane@example.com' },
+    { id: '3', name: 'Alice Johnson', email: 'alice@example.com' },
+  ];
+
+4. UserProfileScreen
+유저의 이름과 이메일 화면에 띄우기
+------------------------------------------------------------------------------------------------------------------
+탭 네비게이션
+npm install @react-navigation/bottom-tabs@6.5.20 --force
+------------------------------------------------------------------------------------------------------------------
+Tab 네비게이터를 이용한 쇼핑앱 만들기
+1.화면 구성
+HomeScreen 홈 화면으로 Welcom to ShopApp라는 텍스트 표시
+CartScreen 장바구니 화면으로 your Cart is Empty라는 텍스트 표시
+ProfileScreen 사용자 프로필 화면으로 your Profile라는 텍스트 표시
+
+아이콘
+HomeScreen : home
+CartScreen : cart
+ProfileScreen : person
+아이콘 크기는 24
+선택된 탭 색상은 blue 선택되지 않은 탭 색상은 gray
+------------------------------------------------------------------------------------------------------------------
+스택 + 탭 네비게이션 상용해보기
+1.탭 네비게이션
+친구(FriendScreen) 친구목록입니다
+채팅(ChatListScreen)
+설정(SettingsScreen)설정화면입니다
+
+2.스택 네비게이션은
+ChatListScreen채팅목록(버튼하나 만들어서 채팅방 들어가기)
+ChatDetailScreen(채팅창입니다.)

@@ -1,0 +1,74 @@
+useEffect 첫번째 인자로 비동기함수가 들어오면 안되는 이유
+
+첫번째 인자는 클린업 함수 또는 undefined를 반환해야하기 때문
+
+만약 useEffect안에서 비동기함수를 사용하고 싶다면 함수 내부에서
+비동기함수를 선언하고 호출하는 방식으로 사용하자 
+
+스크롤위치 추적하는 커스텀 훅
+
+1.사용자 설정 테마 관리
+-사용자가 앱 내에서 다크모드와 라이트모드 선택할 수 있게 하자
+-ThemeContext를 이용해서 테마 상태를 전역으로 관리하고 앱 전체에 테마가
+반영되도록 하자
+
+ThemeContext.js
+
+ThemeComponent 
+-화면의 배경이 어두웠다가 밝아졋다가 할 수 잇도록 하기
+-화면 가운데 텍스트도 'Dark Mode', Light Mode
+-버튼을 누르면 다크모드와 라이트모드로 바뀌도록 설정 
+dark :#333 light:#fff
+-StyleSheet 
+
+2.장바구니 관리
+useReducer()
+현재 상태와, 상태를 어떻게 업데이트할지를 정의한 함수를 통해 새로운 상태를
+반환
+
+주요 개념
+state : 현재 컴포넌트의 상태값
+action : 상태를 어떻게 변경할지 나타내는 "명령"
+reducer : 현재 상태와 액션을 받아서 새로운 상태를 반환하는 함수 
+
+기본문법
+
+const initialState={count: 0}
+
+const [state, dispatch] = useReducer(reducer, initialState);
+
+function reducer(state,action){
+    switch(action.type){
+    case 'INCREMENT':
+      return {count : state.count +1} 
+    case 'DECREMENT':
+      return {count : state.count + -1}
+}
+} 
+
+<Button onClick={() => dispatch({type:'INCREMENT'})}>
+<Button onClick={() => dispatch({type:'DECREMENT'})}>
+
+언제 useReducer를 사용할까?
+1.상태가 여러개일때 useState를 사용해 각각의 상태를 관리하기보다는
+하나의 state 객체로 묶어서 관리하는것이 효율적이기 때문
+
+2.복잡한 로직이 필요할 때 상태 변경에 따라 다양한 조건을 검토하고 여러 단계를
+거쳐서 상태를 변경해야 할 때
+
+3.상태 업데이트 로직을 컴포넌트 밖으로 분리하고 싶을 때 
+reducer함수는 컴포넌트 외부에 둘 수도 있어서 상태 관리 로직을 명확히 분리할 수 잇다. 
+
+<FlatList />
+데이터의 목록을 빠르고 간편하게 렌더링 하기 위한 컴포넌트
+일반적으로 배열의 형태의 데이터를 받아서 각 항목을 화면에 표시
+
+data:리스트에 표시할 데이터 배열
+renderItem: 각 아이템을 어떻게 렌더링할지 정의하는 함수
+keyExtractor :  각 아이템의 고유한 키 값을 지정하는 속성 
+
+
+
+
+
+
